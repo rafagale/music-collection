@@ -14,6 +14,8 @@
 
 <body>
 	<div class="jumbotron">
+		<div class="alert alert-danger text-center" th:if="${error} != null" th:text="${error}"></div>
+	
 		<div class="container">
 		<h2>New people</h2>
 			<br/>

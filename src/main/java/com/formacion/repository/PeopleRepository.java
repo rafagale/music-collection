@@ -10,10 +10,12 @@ import com.formacion.domain.People;
 public interface PeopleRepository extends Repository<People, Long> {
 
 	List<People> findAll();
-	
+
 	List<People> findAllByOrderByName();
-	
+
 	People findById(Long id);
+
+	List<People> findByName(String name);
 
 	People save(People people);
 

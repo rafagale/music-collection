@@ -60,9 +60,12 @@ public class MusicServiceImpl implements MusicService {
 	public Boolean altaPeople(People people) {
 		if (people == null) {
 			return false;
-		} else {
+		}
+		if (peopleRepository.findByName(people.getName()).size() < 1) {
 			peopleRepository.save(people);
 			return true;
+		} else {
+			return false;
 		}
 	}
 

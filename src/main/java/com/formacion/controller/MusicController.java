@@ -127,6 +127,7 @@ public class MusicController {
 			model.addAttribute("people", musicService.findAllPeople());
 			return "redirect:/peoplelist";
 		} else {
+			model.addAttribute("error", "There's already a person called " + people.getName());
 			return "peopleform";
 		}
 	}
