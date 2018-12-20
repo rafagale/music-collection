@@ -1,7 +1,7 @@
 package com.formacion.service.impl;
 
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -71,7 +71,7 @@ public class MusicServiceImpl implements MusicService {
 
 	@Override
 	public Set<Artist> findArtistsByStyle(Style style) {
-		Set<Artist> set = new HashSet<>();
+		Set<Artist> set = new LinkedHashSet<>();
 		if (style == null) {
 			return set;
 		}
