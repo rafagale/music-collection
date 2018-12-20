@@ -13,26 +13,28 @@ import com.formacion.domain.Style;
 public interface MusicService {
 
 	List<Artist> findAllArtists();
-	
+
 	Artist findArtistById(Long id);
 
 	People findPeopleById(Long id);
-	
+
 	Boolean altaArtist(Artist artist);
 
 	Boolean altaPeople(People people);
 
 	Set<Artist> findArtistsByStyle(Style style);
-	
+
 	List<People> findAllPeople();
-	
+
 	List<Style> findAllStyles();
-	
+
 	void saveArtist(Artist artist);
-	
+
 	void savePeople(People people);
-	
+
 	Style findStyleByName(String name);
-	
+
 	void saveStyle(Style style);
+
+	List<Artist> findAllExceptOwner(Artist artist);
 }

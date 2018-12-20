@@ -18,9 +18,9 @@
 		<h2>New people</h2>
 			<br/>
 				<form th:action="@{/addpeople}" th:object="${people}" method="POST">
-				Name: <input type="text" class="form-control" th:field="*{name}" th:value="${name}"></input>
+				Name: <input type="text" class="form-control" th:field="*{name}" th:value="${name}" required="true"></input>
 				<br/>
-				Years: <input type="number" class="form-control" th:field="*{years}" th:value="${years}"></input>
+				Years: <input type="number" class="form-control" th:field="*{years}" th:value="${years}" required="true"></input>
 				<br/>
 				<input type="hidden" th:field="*{id}" />
 

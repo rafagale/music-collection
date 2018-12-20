@@ -1,8 +1,7 @@
-
 INSERT INTO `artists` (`id`,`name`,`year`) VALUES
-(10,'Ebony Green',21),(20,'Melyssa Gaines',41),(30,'Chloe Winters',20),
-(40,'Petra Velazquez',27),(50,'Tiger Patton',25),(60,'Harriet Hinton',53),
-(70,'Knox Whitaker',64),(80,'Davis Shannon',28),(90,'Grady Heath',52),(100,'Hanae Bennett',62);
+(10,'Ebony Green',2015),(20,'Melyssa Gaines',2015),(30,'Chloe Winters',2011),
+(40,'Petra Velazquez',2019),(50,'Tiger Patton',2011),(60,'Harriet Hinton',2014),
+(70,'Knox Whitaker',1992),(80,'Davis Shannon',2017),(90,'Grady Heath',2012),(100,'Hanae Bennett',2013);
 
 
 INSERT INTO

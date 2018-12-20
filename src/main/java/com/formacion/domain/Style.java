@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
@@ -13,10 +14,10 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "styles")
-@SequenceGenerator(name = "seq", initialValue = 60, allocationSize = 100)
+@SequenceGenerator(name = "seq", initialValue = 41)
 public class Style {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
 	@ManyToMany(mappedBy = "styles", fetch = FetchType.LAZY)

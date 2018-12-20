@@ -13,42 +13,53 @@
 </head>
 
 <body>
-<header>
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Musify</a>
-    </div>
+	<header>
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed"
+						data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+						aria-expanded="false">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">Musify</a>
+				</div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><a th:href="@{/peoplelist}">People list</a></li>
-        <li><a th:href="@{/}">Artists list</a></li>
-        <li class="dropdown">
-        </li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-</header>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse"
+					id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li class="active"><a th:href="@{/peoplelist}">People
+								list</a></li>
+						<li><a th:href="@{/}">Artists list</a></li>
+						<li class="dropdown"></li>
+					</ul>
+				</div>
+				<!-- /.navbar-collapse -->
+			</div>
+			<!-- /.container-fluid -->
+		</nav>
+	</header>
 	<div class="container">
-		<div class="card bg-light">
-			<div class="card-body">
-				<h3>Members</h3>
-				<a th:href="@{/addmembers?id=__${artist.id}__}">
+		<div class="card" style="width: 18rem;">
+			<ul class="list-group list-group-flush">
+				<li class="list-group-item" th:text="${artist.name}"></li>
+				<li class="list-group-item" th:text="'Since year '+ ${artist.year}"></li>
+			</ul>
+		</div>
+
+		<div class="card-body">
+			<h3>Members</h3>
+			<a th:href="@{/addmembers?id=__${artist.id}__}">
 				<button type="button" class="btn btn-default">
-				<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
-				 Add member</button>
-				</a>	
-					<table class="table table-stripped">
+					<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+					Add member
+				</button>
+			</a>
+			<table class="table table-stripped">
 				<thead>
 					<tr>
 						<th>Name</th>
@@ -59,16 +70,17 @@
 					<tr th:each="p: ${artist.people}">
 						<td th:text="${p.name}"></td>
 						<td th:text="${p.years}"></td>
-						</tr>
-						</tbody>
-						</table>
-				<h3>Related artists</h3>
-				<a th:href="@{/addfeatured?id=__${artist.id}__}">
+					</tr>
+				</tbody>
+			</table>
+			<h3>Related artists</h3>
+			<a th:href="@{/addfeatured?id=__${artist.id}__}">
 				<button type="button" class="btn btn-default">
-				<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
-				 Add artist</button>
-				</a>	
-				<table class="table table-stripped">
+					<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+					Add artist
+				</button>
+			</a>
+			<table class="table table-stripped">
 				<thead>
 					<tr>
 						<th>Name</th>
@@ -80,18 +92,18 @@
 					<tr th:each="a: ${artist.artists}">
 						<td th:text="${a.name}"></td>
 						<td th:text="${a.year}"></td>
-						<td>
-							<a th:href="@{/removefeatured/__${artist.id}__/__${a.id}__}">
-							<button type="button" class="btn btn-default">
-							<span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
-							 Remove</button>
-							</a>
-						</td>
-						</tr>
-						</tbody>
-						</table>
-			</div>
+						<td><a
+							th:href="@{/removefeatured/__${artist.id}__/__${a.id}__}">
+								<button type="button" class="btn btn-default">
+									<span class="glyphicon glyphicon-remove-circle"
+										aria-hidden="true"></span> Remove
+								</button>
+						</a></td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
+	</div>
 </body>
 
 </html>

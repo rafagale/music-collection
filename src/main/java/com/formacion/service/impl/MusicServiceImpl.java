@@ -1,5 +1,6 @@
 package com.formacion.service.impl;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -32,13 +33,27 @@ public class MusicServiceImpl implements MusicService {
 
 	@Override
 	public List<Artist> findAllArtists() {
-		return artistRepository.findAll();
+		return artistRepository.findAllByOrderByName();
 	}
 
 	@Override
 	public Boolean altaArtist(Artist artist) {
-		artistRepository.save(artist);
-		return true;
+		if (artist == null) {
+			return false;
+		}
+
+		if (artistRepository.findByName(artist.getName()).size() < 1) {
+			if (artist.getStyles().size() < 1) {
+				Style style = new Style();
+				style.setName("Unspecified");
+				styleRepository.save(style);
+				artist.getStyles().add(style);
+			}
+			artistRepository.save(artist);
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	@Override
@@ -63,7 +78,7 @@ public class MusicServiceImpl implements MusicService {
 
 	@Override
 	public List<People> findAllPeople() {
-		List<People> list = peopleRepository.findAll();
+		List<People> list = peopleRepository.findAllByOrderByName();
 		return list;
 	}
 
@@ -100,7 +115,19 @@ public class MusicServiceImpl implements MusicService {
 	@Override
 	public void saveStyle(Style style) {
 		styleRepository.save(style);
-		
+	}
+
+	@Override
+	public List<Artist> findAllExceptOwner(Artist artist) {
+		List<Artist> allArtists = artistRepository.findAll();
+		List<Artist> list = new ArrayList<>();
+
+		for (Artist a : allArtists) {
+			if (!a.getName().equalsIgnoreCase(artist.getName())) {
+				list.add(a);
+			}
+		}
+		return list;
 	}
 
 }

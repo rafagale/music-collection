@@ -11,10 +11,12 @@ public interface ArtistRepository extends Repository<Artist, Long> {
 
 	List<Artist> findAll();
 
+	List<Artist> findAllByOrderByName();	
+	
 	List<Artist> findByName(String name);
 
 	Artist findById(Long id);
-	
+
 	Artist save(Artist artist);
-	
+
 }

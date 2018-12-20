@@ -14,13 +14,14 @@
 
 <body>
 	<div class="jumbotron">
+	<div class="alert alert-danger text-center" th:if="${error} != null" th:text="${error}"></div>
 		<div class="container">
 		<h2>New artist</h2>
 			<br/>
 				<form th:action="@{/addartist}" th:object="${artist}" method="POST">
-				Name: <input type="text" class="form-control" th:field="*{name}" th:value="${name}"></input>
+				Name: <input type="text" class="form-control" th:field="*{name}" th:value="${name}" required="true"></input>
 				<br/>
-				Year: <input type="number" class="form-control" th:field="*{year}" th:value="${year}"></input>
+				Year: <input type="number" class="form-control" th:field="*{year}" th:value="${year}" required="true"></input>
 				<br/>
 				<input type="hidden" th:field="*{id}" />
                Styles:

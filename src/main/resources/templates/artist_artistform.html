@@ -52,9 +52,10 @@
 				<input type="hidden" th:field="*{people}" th:value="${people}" />
 			
             <div th:each="a : ${artists}" >
-                <input type="checkbox" th:field="*{artists}"  th:value="${a.id}" />
-                <label th:text=" | &nbsp; ${a.name}|">Something is wrong !</label>
+                <input type="checkbox" th:field="*{artists}"  th:value="${a.id}" th:id="${a.id}"/>
+                <label th:for="${a.id}" th:text=" | &nbsp; ${a.name}|">Something is wrong !</label>
             </div>
+            
 				<button class="btn btn-lg btn-primary btn-block" type="submit">
 					<span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Add
 				</button>

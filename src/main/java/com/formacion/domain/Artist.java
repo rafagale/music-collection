@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
@@ -14,14 +15,14 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "artists")
-@SequenceGenerator(name = "seq", initialValue = 60, allocationSize = 100)
+@SequenceGenerator(name = "seq", initialValue = 101)
 public class Artist {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
 	private Integer year;
-	@OneToMany(mappedBy = "artist")
+	@OneToMany(mappedBy = "artist", fetch = FetchType.LAZY)
 	private Set<People> people = new LinkedHashSet<>();
 	@ManyToMany(fetch = FetchType.LAZY)
 	private Set<Artist> artists = new LinkedHashSet<>();

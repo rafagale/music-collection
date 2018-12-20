@@ -49,9 +49,7 @@
 							</ul></li>
 					</ul>
 				</div>
-				<!-- /.navbar-collapse -->
 			</div>
-			<!-- /.container-fluid -->
 		</nav>
 	</header>
 	<div class="jumbotron">
@@ -67,8 +65,8 @@
 				 <input type="hidden" th:field="*{artists}" th:value="${artists}" />
 
 				<div th:each="ppl : ${people}">
-					<input type="checkbox" th:field="*{people}" th:value="${ppl.id}" />
-					<label th:text=" | &nbsp; ${ppl.name}|">Something is wrong
+					<input type="checkbox" th:field="*{people}" th:value="${ppl.id}" th:id="${ppl.id}" />
+					<label th:for="${ppl.id}" th:text=" | &nbsp; ${ppl.name}|">Something is wrong
 						!</label>
 				</div>
 				

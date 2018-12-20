@@ -54,6 +54,7 @@ public class MusicController {
 			model.addAttribute("styles", musicService.findAllStyles());
 			return "redirect:/artistslist";
 		} else {
+			model.addAttribute("error", "There's already an artist called " + artist.getName());
 			return "artistform";
 		}
 	}
@@ -69,7 +70,7 @@ public class MusicController {
 	@GetMapping("/addfeatured")
 	public String addFeatured(@RequestParam(name = "id", required = true) Long id, Model model) {
 		Artist artist = musicService.findArtistById(id);
-		model.addAttribute("artists", musicService.findAllArtists());
+		model.addAttribute("artists", musicService.findAllExceptOwner(artist));
 		model.addAttribute("artist", artist);
 
 		return "artist_artistform";
@@ -85,12 +86,10 @@ public class MusicController {
 
 	@PostMapping("/saveartist")
 	public String saveArtist(@ModelAttribute(name = "artist") Artist artist, Model model) {
-
 		for (People ppl : artist.getPeople()) {
 			ppl.setArtist(artist);
 			musicService.savePeople(ppl);
 		}
-
 		musicService.saveArtist(artist);
 		return "redirect:/artistslist";
 	}
