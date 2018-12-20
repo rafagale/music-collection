@@ -1,17 +1,18 @@
 package com.formacion.repository;
 
-import com.formacion.domain.People;
+import java.util.List;
+
 import org.springframework.data.repository.Repository;
 
-import java.util.List;
+import com.formacion.domain.People;
 
 @org.springframework.stereotype.Repository
 public interface PeopleRepository extends Repository<People, Long> {
 
-    List<People> findAll();
+	List<People> findAll();
 
-    People findById(Long id);
-
-    People save(People people);
-
+	People findById(Long id);
+	
+	People save(People people);
+	
 }

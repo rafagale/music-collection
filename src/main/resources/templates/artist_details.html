@@ -33,17 +33,6 @@
         <li class="active"><a th:href="@{/peoplelist}">People list</a></li>
         <li><a th:href="@{/}">Artists list</a></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-          Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a th:href="@{/}">Artists list</a></li>
-            <li><a th:href="@{/peoplelist}">People list</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
-          </ul>
         </li>
       </ul>
     </div><!-- /.navbar-collapse -->
@@ -53,22 +42,26 @@
 	<div class="container">
 		<div class="card bg-light">
 			<div class="card-body">
-				<ul class="list-group">
-					<li class="list-group-item" th:text="${artist.name}"></li>
-					<li class="list-group-item" th:text="${artist.year}"></li>
-					<li class="list-group-item" th:text="${artist.styles}"></li>
-				</ul>
 				<h3>Members</h3>
 				<a th:href="@{/addmembers?id=__${artist.id}__}">
 				<button type="button" class="btn btn-default">
 				<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
 				 Add member</button>
 				</a>	
-								
-				<ul class="list-group" th:each="ppl: ${artist.people}">
-					<li class="list-group-item" th:text="${ppl.name}"></li>
-				</ul>
-				
+					<table class="table table-stripped">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Years</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="p: ${artist.people}">
+						<td th:text="${p.name}"></td>
+						<td th:text="${p.years}"></td>
+						</tr>
+						</tbody>
+						</table>
 				<h3>Related artists</h3>
 				<a th:href="@{/addfeatured?id=__${artist.id}__}">
 				<button type="button" class="btn btn-default">
