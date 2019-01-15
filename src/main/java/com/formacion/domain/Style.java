@@ -12,45 +12,91 @@ import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Style.
+ */
 @Entity
 @Table(name = "styles")
 @SequenceGenerator(name = "seq", initialValue = 41)
 public class Style {
+	
+	/** The id. */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	/** The name. */
 	private String name;
+	
+	/** The artists. */
 	@ManyToMany(mappedBy = "styles", fetch = FetchType.LAZY)
 	private Set<Artist> artists = new LinkedHashSet<>();
 
+	/**
+	 * Instantiates a new style.
+	 */
 	public Style() {
 
 	}
 
+	/**
+	 * Gets the id.
+	 *
+	 * @return the id
+	 */
 	public Long getId() {
 		return id;
 	}
 
+	/**
+	 * Sets the id.
+	 *
+	 * @param id the new id
+	 */
 	public void setId(Long id) {
 		this.id = id;
 	}
 
+	/**
+	 * Gets the name.
+	 *
+	 * @return the name
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * Sets the name.
+	 *
+	 * @param name the new name
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	/**
+	 * Gets the artists.
+	 *
+	 * @return the artists
+	 */
 	public Set<Artist> getArtists() {
 		return artists;
 	}
 
+	/**
+	 * Sets the artists.
+	 *
+	 * @param artists the new artists
+	 */
 	public void setArtists(Set<Artist> artists) {
 		this.artists = artists;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -59,6 +105,9 @@ public class Style {
 		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -76,6 +125,9 @@ public class Style {
 		return true;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
 		return name + ",  ";
